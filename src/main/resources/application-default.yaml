@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: untappd-cqrs
+  jpa:
+    show-sql: true
+    hibernate.ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://localhost:5432/untappd-cqrs
+    username: postgres
+    password: postgres
+  h2.console.enabled: true
+
+security.basic.enabled: false
+management.security.enabled: false
+
+server:
+  compression.enabled: true
+  port: 8080
