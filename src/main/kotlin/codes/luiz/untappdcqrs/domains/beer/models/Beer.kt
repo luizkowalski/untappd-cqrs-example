@@ -6,7 +6,7 @@ import javax.persistence.Entity
 import javax.persistence.Table
 
 @Entity
-@Table(name ="beers")
+@Table(name = "beers")
 data class Beer(
         @Column(nullable = false)
         var name: String = "",

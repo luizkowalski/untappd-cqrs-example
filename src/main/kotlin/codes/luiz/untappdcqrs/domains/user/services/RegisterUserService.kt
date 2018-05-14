@@ -11,7 +11,7 @@ class RegisterUserService(
         val userRepository: UserRepository
 ) {
 
-    fun registerUser(email: String, password: String) : User {
+    fun registerUser(email: String, password: String): User {
         var user = User()
         user.email = email;
         user.password = passwordEncoder.encode(password)
