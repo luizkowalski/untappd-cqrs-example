@@ -1,5 +1,6 @@
-package codes.luiz.untappdcqrs.infrastructure.config
+package codes.luiz.untappdcqrs.infrastructure.config.security
 
+import codes.luiz.untappdcqrs.infrastructure.config.JwtAuthorizationFilter
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod
@@ -10,11 +11,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
-import org.springframework.web.servlet.config.annotation.EnableWebMvc
 
 @Configuration
 @EnableWebSecurity
-@EnableWebMvc
+//@EnableWebMvc
 class WebSecurityConfig(
         val passwordEncoder: PasswordEncoder,
         val userDetailServiceImpl: UserDetailServiceImpl
@@ -32,10 +32,10 @@ class WebSecurityConfig(
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/users/sign_up").permitAll()
-                .antMatchers("/sign_in").permitAll()
+                .antMatchers("/users/sign_up", "sign_in").permitAll()
                 .anyRequest().authenticated()
 
         http.addFilterBefore(JwtLoginFilter("/sign_in", authenticationManager()), UsernamePasswordAuthenticationFilter::class.java)
+        http.addFilterAfter(JwtAuthorizationFilter(), UsernamePasswordAuthenticationFilter::class.java)
     }
 }

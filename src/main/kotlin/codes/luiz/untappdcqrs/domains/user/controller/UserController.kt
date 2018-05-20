@@ -11,7 +11,7 @@ class UserController(
         val registerUserService: RegisterUserService
 ) {
 
-    @PostMapping("sign_up")
+    @PostMapping(path = ["sign_up"])
     fun registerUser(
             @RequestParam
             email: String,

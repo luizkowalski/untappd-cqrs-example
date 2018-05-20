@@ -10,9 +10,5 @@ spring:
     username: postgres
     password: postgres
 
-  management.security.enabled: false
-
-debug: true
-
 server:
   port: 8080

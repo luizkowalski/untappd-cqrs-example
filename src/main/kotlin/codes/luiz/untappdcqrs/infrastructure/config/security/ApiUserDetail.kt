@@ -1,4 +1,4 @@
-package codes.luiz.untappdcqrs.infrastructure.config
+package codes.luiz.untappdcqrs.infrastructure.config.security
 
 import codes.luiz.untappdcqrs.domains.user.models.User
 import org.springframework.security.core.GrantedAuthority

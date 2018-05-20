@@ -1,13 +1,14 @@
-package codes.luiz.untappdcqrs.infrastructure.config
+package codes.luiz.untappdcqrs.infrastructure.config.security
 
+import codes.luiz.untappdcqrs.infrastructure.services.JwtService
 import com.fasterxml.jackson.databind.ObjectMapper
+import org.springframework.http.HttpStatus
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.Authentication
 import org.springframework.security.core.AuthenticationException
-import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter
+import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher
 import java.io.IOException
 import java.util.*
 import javax.servlet.FilterChain
@@ -27,6 +28,7 @@ class JwtLoginFilter(url: String, authManager: AuthenticationManager) : Username
                                        response: HttpServletResponse): Authentication {
 
         var credentials = ObjectMapper().readValue(request.inputStream, AccountCredentials::class.java)
+        println("Reading credentials")
         return authenticationManager.authenticate(
                 UsernamePasswordAuthenticationToken(
                         credentials.email,
@@ -36,13 +38,24 @@ class JwtLoginFilter(url: String, authManager: AuthenticationManager) : Username
         );
     }
 
-    override fun successfulAuthentication(request: HttpServletRequest, response: HttpServletResponse, chain: FilterChain, authResult: Authentication) {
-        response.addHeader("Authorization", "Faketoken")
-        chain.doFilter(request, response)
+    override fun successfulAuthentication(request: HttpServletRequest,
+                                          response: HttpServletResponse, chain: FilterChain, authResult: Authentication) {
+        println("Successful!")
+        var details = (authResult.principal as ApiUserDetail)
+
+        println("Create token!")
+        var token = JwtService().createToken(details.user)
+        println("Token: $token")
+
+        response.addHeader("Authorization", token)
+        SecurityContextHolder.getContext().authentication = authResult
+        return;
     }
 
-    override fun unsuccessfulAuthentication(request: HttpServletRequest?, response: HttpServletResponse?, failed: AuthenticationException?) {
+    override fun unsuccessfulAuthentication(request: HttpServletRequest,
+                                            response: HttpServletResponse, failed: AuthenticationException?) {
         println("Failed to auth")
+        response.sendError(HttpStatus.UNAUTHORIZED.value(), "Not authorized")
     }
 
 }

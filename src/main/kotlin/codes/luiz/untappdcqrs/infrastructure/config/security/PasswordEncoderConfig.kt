@@ -1,4 +1,4 @@
-package codes.luiz.untappdcqrs.infrastructure.config
+package codes.luiz.untappdcqrs.infrastructure.config.security
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -9,7 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder
 class PasswordEncoderConfig {
 
     @Bean
-    fun passwordEncoder() : PasswordEncoder {
-        return BCryptPasswordEncoder(25)
+    fun passwordEncoder(): PasswordEncoder {
+        return BCryptPasswordEncoder()
     }
 }

@@ -1,4 +1,4 @@
-package codes.luiz.untappdcqrs.infrastructure.config
+package codes.luiz.untappdcqrs.infrastructure.config.security
 
 import lombok.AllArgsConstructor
 import lombok.Data

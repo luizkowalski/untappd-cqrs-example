@@ -4,6 +4,14 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.0.2.RELEASE</version>
+    <relativePath></relativePath>
+    <!-- lookup parent from repository -->
+  </parent>
+
   <groupId>codes.luiz</groupId>
   <artifactId>untappd-cqrs</artifactId>
   <version>0.0.1-SNAPSHOT</version>
@@ -11,13 +19,6 @@
 
   <name>untappd-cqrs</name>
   <description>Demo CQRS</description>
-
-  <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.0.2.RELEASE</version>
-    <relativePath/> <!-- lookup parent from repository -->
-  </parent>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -27,10 +28,6 @@
   </properties>
 
   <dependencies>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-actuator</artifactId>
-    </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -55,12 +52,12 @@
       <groupId>org.jetbrains.kotlin</groupId>
       <artifactId>kotlin-reflect</artifactId>
     </dependency>
-
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-devtools</artifactId>
-      <scope>runtime</scope>
+      <groupId>com.auth0</groupId>
+      <artifactId>java-jwt</artifactId>
+      <version>3.3.0</version>
     </dependency>
+
     <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
@@ -93,8 +90,8 @@
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
       <plugin>
-        <artifactId>kotlin-maven-plugin</artifactId>
         <groupId>org.jetbrains.kotlin</groupId>
+        <artifactId>kotlin-maven-plugin</artifactId>
         <configuration>
           <args>
             <arg>-Xjsr305=strict</arg>
@@ -113,6 +110,5 @@
       </plugin>
     </plugins>
   </build>
-
 
 </project>
