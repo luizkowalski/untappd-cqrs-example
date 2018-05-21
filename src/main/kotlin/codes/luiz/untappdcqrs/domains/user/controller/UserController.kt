@@ -11,17 +11,20 @@ class UserController(
         val registerUserService: RegisterUserService
 ) {
 
-    @PostMapping(path = ["sign_up"])
+    @PostMapping("sign_up")
     fun registerUser(
             @RequestParam
             email: String,
             @RequestParam
             password: String
     ): ResponseEntity<Any> {
-        var user = registerUserService.registerUser(email, password)
-        return ResponseEntity.status(HttpStatus.CREATED).body(user)
+        return try {
+            var user = registerUserService.registerUser(email, password)
+            ResponseEntity.status(HttpStatus.CREATED).body(user)
+        } catch (exception: Exception) {
+            ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something went wrong")
+        }
     }
-
 
     @GetMapping("test")
     fun getUserInfo(): String {
