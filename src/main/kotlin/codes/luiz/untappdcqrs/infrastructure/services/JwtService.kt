@@ -13,7 +13,14 @@ class JwtService {
 
         return JWT.create().withIssuer(issuer)
                 .withClaim("user", user.email)
+                .withClaim("usid", user.id.toString())
                 .sign(algorithm)
+    }
+
+    fun getEmailFromToken(token: String): String {
+        return JWT
+                .decode(token)
+                .getClaim("user").asString()
     }
 
     fun validToken(token: String): Boolean {
