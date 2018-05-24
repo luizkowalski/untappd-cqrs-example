@@ -44,7 +44,10 @@ class JwtAuthorizationFilter(
     }
 
     private fun createFrameworkAuth(user: ApiUserDetail, req: HttpServletRequest): Authentication {
-        val authentication = UsernamePasswordAuthenticationToken(user, null, user.authorities)
+        val authentication = UsernamePasswordAuthenticationToken(
+                user,
+                null,
+                user.authorities)
         authentication.details = WebAuthenticationDetailsSource().buildDetails(req)
 
         return authentication
