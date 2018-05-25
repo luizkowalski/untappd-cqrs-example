@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: untappd-cqrs
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate:
+        temp.use_jdbc_metadata_defaults: false
+
+server:
+  port: 8080

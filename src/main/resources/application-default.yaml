@@ -1,20 +1,14 @@
 spring:
-  application:
-    name: untappd-cqrs
   jpa:
     show-sql: true
-    open-in-view: false
     hibernate:
       ddl-auto: update
 
     properties:
       hibernate:
         format_sql: true
-        temp.use_jdbc_metadata_defaults: false
+
   datasource:
     url: jdbc:postgresql://localhost:5432/untappd_cqrs
     username: postgres
     password: postgres
-
-server:
-  port: 8080

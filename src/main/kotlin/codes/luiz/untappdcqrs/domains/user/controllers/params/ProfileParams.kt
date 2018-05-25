@@ -1,8 +1,7 @@
 package codes.luiz.untappdcqrs.domains.user.controllers.params
 
 import java.io.Serializable
-import java.util.UUID
-import lombok.Data
+import java.util.*
 
 data class ProfileParam(
         var id: UUID? = null,

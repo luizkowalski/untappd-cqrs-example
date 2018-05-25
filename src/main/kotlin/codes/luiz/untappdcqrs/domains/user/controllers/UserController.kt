@@ -3,7 +3,6 @@ package codes.luiz.untappdcqrs.domains.user.controllers
 import codes.luiz.untappdcqrs.domains.common.services.AuthenticatedUser
 import codes.luiz.untappdcqrs.domains.user.controllers.params.ProfileParam
 import codes.luiz.untappdcqrs.domains.user.repositories.ProfileRepository
-import codes.luiz.untappdcqrs.domains.user.repositories.UserRepository
 import codes.luiz.untappdcqrs.domains.user.services.RegisterUserService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
