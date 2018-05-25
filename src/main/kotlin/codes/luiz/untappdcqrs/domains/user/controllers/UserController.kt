@@ -30,7 +30,7 @@ class UserController(
     }
   }
 
-  @GetMapping("me")
+  @GetMapping(value = ["me", "profile"])
   fun getUserInfo(): ResponseEntity<ProfileParam> {
     var profile = profileRepository.findByUserId(AuthenticatedUser.current().id()!!)
 

@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory
 import org.springframework.context.event.EventListener
 import org.springframework.scheduling.annotation.Async
 import org.springframework.stereotype.Component
+import org.springframework.transaction.annotation.Transactional
 import java.math.BigDecimal
 
 @Component
@@ -20,6 +21,7 @@ class BeerCheckinListener(
   var logger: Logger = LoggerFactory.getLogger(BeerCheckinListener::class.java)
 
   @EventListener
+  @Transactional
   fun beerCheckedIn(event: CheckinCreated) {
     logger.info("Updating beer rating")
     var beerId = event.checkin.beerId

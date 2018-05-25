@@ -20,6 +20,7 @@ class UserCheckinListener(
 
   @EventListener
   fun increaseCheckinCount(event: CheckinCreated) {
+    Thread.sleep(7000)
     logger.info("Updating user profile")
     var profile = profileRepository.findByUserId(event.checkin.userId!!)
     profile.checkinCount += 1
