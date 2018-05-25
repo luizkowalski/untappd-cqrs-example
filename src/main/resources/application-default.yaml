@@ -3,10 +3,16 @@ spring:
     name: untappd-cqrs
   jpa:
     show-sql: true
-    hibernate.ddl-auto: update
-    properties.hibernate.temp.use_jdbc_metadata_defaults: false
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+
+    properties:
+      hibernate:
+        format_sql: true
+        temp.use_jdbc_metadata_defaults: false
   datasource:
-    url: jdbc:postgresql://localhost:5432/untappd-cqrs
+    url: jdbc:postgresql://localhost:5432/untappd_cqrs
     username: postgres
     password: postgres
 

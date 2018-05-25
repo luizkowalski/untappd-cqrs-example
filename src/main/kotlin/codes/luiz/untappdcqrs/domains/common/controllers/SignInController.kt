@@ -1,7 +1,7 @@
 package codes.luiz.untappdcqrs.domains.common.controllers
 
 import codes.luiz.untappdcqrs.domains.user.repositories.UserRepository
-import codes.luiz.untappdcqrs.infrastructure.services.JwtService
+import codes.luiz.untappdcqrs.domains.common.services.JwtService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.security.crypto.password.PasswordEncoder
@@ -18,21 +18,21 @@ class SignInController(
 ) {
 
 
-    @PostMapping
-    fun signIn(
-            @RequestParam
-            email: String,
-            @RequestParam
-            password: String
-    ): ResponseEntity<Any> {
-        var user = userRepository.findByEmail(email)
-        if (user.isPresent && passwordEncoder.matches(password, user.get().password)) {
-            var token = JwtService().createToken(user.get())
-            return ResponseEntity.status(HttpStatus.OK).body(token)
-        }
-
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized")
+  @PostMapping
+  fun signIn(
+          @RequestParam
+          email: String,
+          @RequestParam
+          password: String
+  ): ResponseEntity<Any> {
+    var user = userRepository.findByEmail(email)
+    if (user.isPresent && passwordEncoder.matches(password, user.get().password)) {
+      var token = JwtService().createToken(user.get())
+      return ResponseEntity.status(HttpStatus.OK).body(token)
     }
+
+    return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized")
+  }
 
 
 }

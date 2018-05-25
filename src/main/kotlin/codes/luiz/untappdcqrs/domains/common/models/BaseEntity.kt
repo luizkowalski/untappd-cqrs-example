@@ -1,4 +1,4 @@
-package codes.luiz.untappdcqrs.domains
+package codes.luiz.untappdcqrs.domains.common.models
 
 import lombok.Data
 import org.hibernate.annotations.GenericGenerator

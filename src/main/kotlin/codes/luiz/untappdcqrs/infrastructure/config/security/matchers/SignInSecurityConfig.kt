@@ -19,21 +19,21 @@ class SignInSecurityConfig(
         val userRepository: UserRepository
 ) : WebSecurityConfigurerAdapter(true) {
 
-    override fun configure(web: WebSecurity) {
-        web.ignoring().antMatchers("/sign_in", "/users/sign_up")
-    }
+  override fun configure(web: WebSecurity) {
+    web.ignoring().antMatchers("/sign_in", "/users/sign_up")
+  }
 
-    override fun configure(http: HttpSecurity) {
-        http.cors().and().csrf().disable()
-                .exceptionHandling()
-                .authenticationEntryPoint(authenticationEntryPoint)
-                .and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .authorizeRequests()
-                .anyRequest().authenticated()
+  override fun configure(http: HttpSecurity) {
+    http.cors().and().csrf().disable()
+            .exceptionHandling()
+            .authenticationEntryPoint(authenticationEntryPoint)
+            .and()
+            .sessionManagement()
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .and()
+            .authorizeRequests()
+            .anyRequest().authenticated()
 
-        http.addFilterBefore(JwtAuthorizationFilter(userRepository), UsernamePasswordAuthenticationFilter::class.java)
-    }
+    http.addFilterBefore(JwtAuthorizationFilter(userRepository), UsernamePasswordAuthenticationFilter::class.java)
+  }
 }

@@ -1,6 +1,6 @@
 package codes.luiz.untappdcqrs.domains.user.models
 
-import codes.luiz.untappdcqrs.domains.BaseEntity
+import codes.luiz.untappdcqrs.domains.common.models.BaseEntity
 import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.Column
 import javax.persistence.Entity
@@ -9,7 +9,7 @@ import javax.persistence.Table
 
 @Entity
 @Table(name = "users", indexes = [
-    Index(name = "email_idx", columnList = "email", unique = true)
+  Index(name = "email_idx", columnList = "email", unique = true)
 ])
 data class User(
         @Column(nullable = false, length = 50)

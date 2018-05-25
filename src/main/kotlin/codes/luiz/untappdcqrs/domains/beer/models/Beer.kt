@@ -1,6 +1,6 @@
 package codes.luiz.untappdcqrs.domains.beer.models
 
-import codes.luiz.untappdcqrs.domains.BaseEntity
+import codes.luiz.untappdcqrs.domains.common.models.BaseEntity
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.Table
