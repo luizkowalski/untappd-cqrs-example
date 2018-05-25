@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("users")
 class UserController(
         val registerUserService: RegisterUserService,
-        val userRepository: UserRepository,
         val profileRepository: ProfileRepository
 ) {
 
