@@ -10,6 +10,10 @@ import java.util.*
 import javax.persistence.*
 
 @Entity
+@Table(name = "checkins", indexes = [
+  Index(name = "idx_user_id_on_checkin", columnList = "userId"),
+  Index(name = "idx_beer_id_on_checkin", columnList = "beerId")
+])
 @EntityListeners(AuditingEntityListener::class)
 data class Checkin(
         @Id
@@ -29,7 +33,10 @@ data class Checkin(
         var userId: UUID? = null,
 
         @Column(columnDefinition = "TEXT")
-        var description: String = ""
+        var description: String = "",
+
+        @Column
+        var rate: Int = 5
 ) : AbstractAggregateRoot<Checkin>() {
 
   @PrePersist

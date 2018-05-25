@@ -1,9 +1,9 @@
 package codes.luiz.untappdcqrs.infrastructure.config
 
+import codes.luiz.untappdcqrs.domains.common.services.JwtService
 import codes.luiz.untappdcqrs.domains.user.models.User
 import codes.luiz.untappdcqrs.domains.user.repositories.UserRepository
 import codes.luiz.untappdcqrs.infrastructure.config.security.ApiUserDetail
-import codes.luiz.untappdcqrs.domains.common.services.JwtService
 import org.springframework.http.HttpStatus
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.Authentication

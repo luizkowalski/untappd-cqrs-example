@@ -1,7 +1,7 @@
 package codes.luiz.untappdcqrs.domains.common.controllers
 
-import codes.luiz.untappdcqrs.domains.user.repositories.UserRepository
 import codes.luiz.untappdcqrs.domains.common.services.JwtService
+import codes.luiz.untappdcqrs.domains.user.repositories.UserRepository
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.security.crypto.password.PasswordEncoder

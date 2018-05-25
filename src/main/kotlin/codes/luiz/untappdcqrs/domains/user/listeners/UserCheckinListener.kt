@@ -11,13 +11,16 @@ import org.springframework.stereotype.Component
 
 @Component
 @Async
-class CheckinCreatedListener(
+class UserCheckinListener(
         val profileRepository: ProfileRepository,
         val checkinRepository: CheckinRepository
 ) {
 
+  var logger: Logger = LoggerFactory.getLogger(UserCheckinListener::class.java)
+
   @EventListener
   fun increaseCheckinCount(event: CheckinCreated) {
+    logger.info("Updating user profile")
     var profile = profileRepository.findByUserId(event.checkin.userId!!)
     profile.checkinCount += 1
     profile.uniqueCheckinCount = checkinRepository.findDistinctCheckinCount(event.checkin.userId!!)

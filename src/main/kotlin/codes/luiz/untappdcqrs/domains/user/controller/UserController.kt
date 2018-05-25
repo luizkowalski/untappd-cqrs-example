@@ -1,10 +1,8 @@
 package codes.luiz.untappdcqrs.domains.user.controller
 
 import codes.luiz.untappdcqrs.domains.user.services.RegisterUserService
-import codes.luiz.untappdcqrs.infrastructure.config.security.ApiUserDetail
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.web.bind.annotation.*
 
 @RestController

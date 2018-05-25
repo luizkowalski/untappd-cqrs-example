@@ -13,7 +13,7 @@ import javax.persistence.Table
 @NoArgsConstructor
 @Entity
 @Table(name = "profiles", indexes = [
-  (Index(name = "idx_user_id", columnList = "userId"))
+  (Index(name = "idx_user_id_on_profile", columnList = "userId"))
 ])
 data class Profile(
         @Column
