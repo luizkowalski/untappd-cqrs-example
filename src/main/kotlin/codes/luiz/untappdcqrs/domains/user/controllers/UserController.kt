@@ -35,14 +35,12 @@ class UserController(
     var profile = profileRepository.findByUserId(AuthenticatedUser.current().id()!!)
 
     var resp = ProfileParam()
-    resp.id = AuthenticatedUser.current().id()
-    resp.email = AuthenticatedUser.current().username
+    resp.id = profile.userId
+    resp.email = profile.email
 
     resp.checkinCount = profile.checkinCount
     resp.uniqueCheckinCount = profile.uniqueCheckinCount
 
     return ResponseEntity.ok().body(resp)
   }
-
-
 }

@@ -23,5 +23,8 @@ data class Profile(
         var uniqueCheckinCount: Int = 0,
 
         @Column
-        var userId: UUID? = null
+        var userId: UUID? = null,
+
+        @Column(length = 100)
+        var email: String = ""
 ) : BaseEntity()

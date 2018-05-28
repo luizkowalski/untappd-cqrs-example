@@ -1,6 +1,7 @@
 package codes.luiz.untappdcqrs.domains.user.listeners
 
 import codes.luiz.untappdcqrs.domains.checkin.events.CheckinCreated
+import codes.luiz.untappdcqrs.domains.checkin.events.CheckinDeleted
 import codes.luiz.untappdcqrs.domains.checkin.repositories.CheckinRepository
 import codes.luiz.untappdcqrs.domains.user.repositories.ProfileRepository
 import org.slf4j.Logger
@@ -20,10 +21,18 @@ class UserCheckinListener(
 
   @EventListener
   fun increaseCheckinCount(event: CheckinCreated) {
-    Thread.sleep(7000)
-    logger.info("Updating user profile")
     var profile = profileRepository.findByUserId(event.checkin.userId!!)
     profile.checkinCount += 1
+    profile.uniqueCheckinCount = checkinRepository.findDistinctCheckinCount(event.checkin.userId!!)
+
+    profileRepository.save(profile)
+  }
+
+  @EventListener
+  fun decreaseCheckinCount(event: CheckinDeleted){
+    logger.info("Updating profile")
+    var profile = profileRepository.findByUserId(event.checkin.userId!!)
+    profile.checkinCount -= 1
     profile.uniqueCheckinCount = checkinRepository.findDistinctCheckinCount(event.checkin.userId!!)
 
     profileRepository.save(profile)

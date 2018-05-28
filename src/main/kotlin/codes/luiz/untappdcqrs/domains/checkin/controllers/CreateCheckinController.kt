@@ -8,10 +8,8 @@ import codes.luiz.untappdcqrs.domains.common.services.AuthenticatedUser
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
+import java.util.*
 
 @RestController
 @RequestMapping("/checkin")
@@ -29,6 +27,12 @@ class CreateCheckinController(
     checkin.rate = params.rating
 
     checkinRepository.save(checkin)
-    return ResponseEntity.status(HttpStatus.CREATED).body("")
+    return ResponseEntity.status(HttpStatus.CREATED).body(checkin)
+  }
+
+  @DeleteMapping(value = "/{id}")
+  fun deleteCheckin(@PathVariable("id") checkinId: UUID): ResponseEntity<String> {
+    checkinRepository.deleteById(checkinId)
+    return ResponseEntity.status(HttpStatus.NO_CONTENT).body("")
   }
 }
