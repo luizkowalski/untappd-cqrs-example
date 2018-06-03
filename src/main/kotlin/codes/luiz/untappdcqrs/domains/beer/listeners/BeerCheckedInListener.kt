@@ -13,12 +13,12 @@ import java.math.BigDecimal
 
 @Component
 @Async
-class BeerCheckinListener(
+class BeerCheckedInListener(
         val checkinRepository: CheckinRepository,
         val beerRepository: BeerRepository
 ) {
 
-  var logger: Logger = LoggerFactory.getLogger(BeerCheckinListener::class.java)
+  var logger: Logger = LoggerFactory.getLogger(BeerCheckedInListener::class.java)
 
   @EventListener
   @Transactional
