@@ -12,7 +12,7 @@ import javax.validation.constraints.Min
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-class PostCheckinParams {
+class CreateCheckinParams {
 
   @NotNull
   @JsonProperty("beer_id")

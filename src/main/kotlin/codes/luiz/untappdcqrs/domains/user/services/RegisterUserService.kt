@@ -16,18 +16,23 @@ class RegisterUserService(
 ) {
 
   @Transactional
-  fun registerUser(email: String, password: String): User {
-    var user = User()
-    user.email = email;
-    user.password = passwordEncoder.encode(password)
+  fun registerUser(emailAddress: String, password: String): User {
+    var user = User().apply {
+      this.email = emailAddress
+      this.password = passwordEncoder.encode(password)
+    }
 
-    var savedUser = userRepository.save(user)
-    profileRepository.save(Profile(
-            0,
-            0,
-            savedUser.id,
-            savedUser.email))
+    user = userRepository.save(user)
 
-    return savedUser
+    var profile = Profile().apply {
+      checkinCount = 0
+      uniqueCheckinCount = 0
+      userId = user.id
+      this.email = user.email
+    }
+
+    profileRepository.save(profile)
+
+    return user
   }
 }

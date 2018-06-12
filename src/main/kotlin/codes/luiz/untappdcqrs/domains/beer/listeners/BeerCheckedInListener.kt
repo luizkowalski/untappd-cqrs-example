@@ -2,6 +2,7 @@ package codes.luiz.untappdcqrs.domains.beer.listeners
 
 import codes.luiz.untappdcqrs.domains.beer.repositories.BeerRepository
 import codes.luiz.untappdcqrs.domains.checkin.events.CheckinCreated
+import codes.luiz.untappdcqrs.domains.checkin.events.CheckinDeleted
 import codes.luiz.untappdcqrs.domains.checkin.repositories.CheckinRepository
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -24,6 +25,7 @@ class BeerCheckedInListener(
   @Transactional
   fun beerCheckedIn(event: CheckinCreated) {
     logger.info("Updating beer rating")
+
     var beerId = event.checkin.beerId
     var averageRating = checkinRepository.findAverageRatingFromBeer(beerId!!)
 
@@ -32,5 +34,11 @@ class BeerCheckedInListener(
     beer.totalCheckin += 1
 
     beerRepository.save(beer)
+  }
+
+  @EventListener
+  @Transactional
+  fun checkinDeleted(event: CheckinDeleted){
+    logger.info("Checkin deleted: ${event.checkin.beerId}")
   }
 }

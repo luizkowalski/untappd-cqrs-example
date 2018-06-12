@@ -44,10 +44,4 @@ data class Checkin(
   fun created() {
     registerEvent(CheckinCreated(this))
   }
-
-  @PreRemove
-  fun deleted() {
-    println("Removing...")
-    registerEvent(CheckinDeleted(this))
-  }
 }
