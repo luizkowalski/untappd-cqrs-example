@@ -12,3 +12,6 @@ spring:
     url: jdbc:postgresql://localhost:5432/untappd_cqrs
     username: postgres
     password: postgres
+
+logging.level.org.hibernate.SQL: INFO
+logging.level.org.hibernate: INFO
