@@ -29,7 +29,7 @@ class UserCheckinListener(
   }
 
   @EventListener
-  fun decreaseCheckinCount(event: CheckinDeleted){
+  fun decreaseCheckinCount(event: CheckinDeleted) {
     logger.info("Updating profile")
     var profile = profileRepository.findByUserId(event.checkin.userId!!)
     profile.checkinCount -= 1

@@ -1,7 +1,6 @@
 package codes.luiz.untappdcqrs.domains.checkin.models
 
 import codes.luiz.untappdcqrs.domains.checkin.events.CheckinCreated
-import codes.luiz.untappdcqrs.domains.checkin.events.CheckinDeleted
 import org.hibernate.annotations.GenericGenerator
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.domain.AbstractAggregateRoot

@@ -11,7 +11,7 @@ class CreateCheckinService(
         val checkinRepository: CheckinRepository
 ) {
 
-  fun createCheckin(params: CreateCheckinParams) : Checkin{
+  fun createCheckin(params: CreateCheckinParams): Checkin {
     var checkin = Checkin().apply {
       this.beerId = params.beerId
       this.description = params.description

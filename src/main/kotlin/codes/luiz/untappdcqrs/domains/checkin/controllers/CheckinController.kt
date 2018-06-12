@@ -2,11 +2,9 @@ package codes.luiz.untappdcqrs.domains.checkin.controllers
 
 import codes.luiz.untappdcqrs.domains.beer.repositories.BeerRepository
 import codes.luiz.untappdcqrs.domains.checkin.controllers.params.CreateCheckinParams
-import codes.luiz.untappdcqrs.domains.checkin.models.Checkin
 import codes.luiz.untappdcqrs.domains.checkin.repositories.CheckinRepository
 import codes.luiz.untappdcqrs.domains.checkin.services.CreateCheckinService
 import codes.luiz.untappdcqrs.domains.checkin.services.DeleteCheckinService
-import codes.luiz.untappdcqrs.domains.common.services.AuthenticatedUser
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated

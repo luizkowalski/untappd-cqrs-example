@@ -3,7 +3,6 @@ package codes.luiz.untappdcqrs.infrastructure.config.security.matchers
 import codes.luiz.untappdcqrs.domains.user.repositories.UserRepository
 import codes.luiz.untappdcqrs.infrastructure.config.JwtAuthorizationFilter
 import org.springframework.context.annotation.Configuration
-import org.springframework.core.annotation.Order
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.builders.WebSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity

@@ -38,7 +38,7 @@ class BeerCheckedInListener(
 
   @EventListener
   @Transactional
-  fun checkinDeleted(event: CheckinDeleted){
+  fun checkinDeleted(event: CheckinDeleted) {
     logger.info("Checkin deleted: ${event.checkin.beerId}")
   }
 }
