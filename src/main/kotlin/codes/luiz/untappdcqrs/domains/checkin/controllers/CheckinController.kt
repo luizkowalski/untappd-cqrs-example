@@ -6,7 +6,6 @@ import codes.luiz.untappdcqrs.domains.checkin.services.CreateCheckinService
 import codes.luiz.untappdcqrs.domains.checkin.services.DeleteCheckinService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
 import java.util.*
 import javax.validation.Valid
