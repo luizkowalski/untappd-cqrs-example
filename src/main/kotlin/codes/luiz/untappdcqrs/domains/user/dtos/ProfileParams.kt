@@ -1,9 +1,9 @@
-package codes.luiz.untappdcqrs.domains.user.controllers.params
+package codes.luiz.untappdcqrs.domains.user.dtos
 
 import java.io.Serializable
 import java.util.*
 
-data class ProfileParam(
+data class ProfileDTO(
         var id: UUID? = null,
         var email: String = "",
         var checkinCount: Int = 0,
